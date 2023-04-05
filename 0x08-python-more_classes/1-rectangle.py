@@ -1,7 +1,3 @@
-#!/usr/bin/python3
-""" module that creates a rectangle and initializes its features """
-
-
 class Rectangle:
     def __init__(self, width=0, height=0):
         self.width = width
