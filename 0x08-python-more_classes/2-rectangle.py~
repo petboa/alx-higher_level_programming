@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+"""Module 1-rectangle"""
+
+class Rectangle:
+    """Define a rectangle"""
+
+    def _init_(self, width=0, height=0):
+        """Constructor"""
+
+        self.width = width
+        self.heigh = height
+
+    @property
+    def width(self):
+        """Returns the width of the rectangle"""
+
+        return self._width
+
+    @width.setter
+    def 
