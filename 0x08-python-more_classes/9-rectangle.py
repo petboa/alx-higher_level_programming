@@ -1,6 +1,6 @@
 #!/usr/bin/python3
+"""rectangle class"""
 
-"""This is a program to practice classes and objects."""
 
 class Rectangle:
     """A class representing a rectangle."""
