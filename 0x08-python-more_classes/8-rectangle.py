@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Rectangle class."""
 
+
 class Rectangle:
     """Creates a rectangle object."""
 
@@ -53,8 +54,10 @@ class Rectangle:
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
-        """Compares two rectangles by their areas and returns the bigger one."""
-        if not isinstance(rect_1, Rectangle) or not isinstance(rect_2, Rectangle):
+        """Compares two rectangles by their 
+        areas and returns the bigger one."""
+        if not isinstance(rect_1, Rectangle) 
+        or not isinstance(rect_2, Rectangle):
             raise TypeError('rect_1 and rect_2 must be instances of Rectangle')
         if rect_1.area() >= rect_2.area():
             return rect_1
@@ -64,13 +67,16 @@ class Rectangle:
         """Returns a string representation of the rectangle."""
         if not self.perimeter:
             return ""
-        return '\n'.join(str(self.print_symbol) * self._width for x in range(self._height))
+        return '\n'.join(str(self.print_symbol)
+                         * self._width for x in range(self._height))
 
     def __repr__(self):
-        """Returns a string representation of the rectangle for debugging purposes."""
+        """Returns a string representation
+        of the rectangle for debugging purposes."""
         return f"Rectangle({self._width}, {self._height})"
 
     def __del__(self):
-        """Deletes the rectangle object and updates the number_of_instances variable."""
+        """Deletes the rectangle object and 
+        updates the number_of_instances variable."""
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
