@@ -2,6 +2,7 @@
 """Rectangle class
 """
 
+
 class Rectangle:
     """Creates a rectangle object
     """
@@ -66,7 +67,8 @@ class Rectangle:
         return('\n'.join('#' * self.width for x in range(self.height)))
 
     def __repr__(self):
-        """Returns a string representation of the rectangle that can be used to recreate it
+        """Returns a string representation of the
+        rectangle that can be used to recreate it
         """
         return("Rectangle({}, {})".format(self.width, self.height))
 
