@@ -1,4 +1,4 @@
 Python - Test-driven development
 
 
-![image](https://user-images.githubusercontent.com/112291489/233859292-61e5467d-d643-4745-a68c-91aed60f2485.png)
+![giphy-4](https://user-images.githubusercontent.com/112291489/233859400-f0746289-135d-453d-ba6a-bc2b7eada8ce.gif)
