@@ -8,27 +8,42 @@ def print_solution(board):
         print([[idx, board[idx].index(1)] for idx, val in enumerate(board)])
 
 
-def is_square_safe(row, col, board, n, diags):
-    if board[row][col]:
-        return False
-    if col - diags >= 0 and board[row][col - diags]:
-        return False
-    if col + diags < (n) and board[row][col + diags]:
-        return False
-    if row == 0:
-        return True
-    return is_square_safe(row - 1, col, board, n, diags + 1)
+def is_square_safe(row, col, board, n):
+    for i in range(row):
+        if board[i][col]:
+            return False
+        if col-(row-i) >= 0 and board[i][col-(row-i)]:
+            return False
+        if col+(row-i) <= n-1 and board[i][col+(row-i)]:
+            return False
+    return True
+    
 
-
-def place_queen(row, col, board, n):
-    for c in range(col, n):
-        if 1 in board[row]:
-            return 0
-        if not is_square_safe(row - 1, c, board, n, 1):
-            continue
-        board[row][c] = 1
-        return
-    return 1
+def solve_n_queens(n):
+    queen_cols = [-1] * n
+    board = []
+    for i in range(n):
+        board.append([0]*n)
+    queen = 0
+    col = 0
+    while queen >= 0:
+        while col < n:
+            if is_square_safe(queen, col, board, n):
+                board[queen][col] = 1
+                queen_cols[queen] = col
+                queen += 1
+                col = 0
+                break
+            else:
+                col += 1
+        if col == n or queen == n:
+            if queen == n:
+                print_solution(board)
+            queen -= 1
+            col = queen_cols[queen] + 1
+            queen_cols[queen] = -1
+            board[queen][col-1] = 0
+    return
 
 
 if len(sys.argv) != 2:
@@ -47,23 +62,5 @@ if n < 4:
     print("N must be at least 4")
     sys.exit(1)
 
-queen = 0
-
-while queen != n:
-    board = [[0 for x in range(n)] for x in range(n)]
-    board[0][queen] = 1
-    col = 0
-    row = 1
-    while row < n:
-        if place_queen(row, col, board, n):
-            row -= 1
-            col = board[row].index(1)
-            board[row][col] = 0
-            col += 1
-            if not row:
-                break
-        else:
-            row += 1
-            col = 0
-    print_solution(board)
-    queen += 1
+solve_n_queens(n)
+print("OK")
