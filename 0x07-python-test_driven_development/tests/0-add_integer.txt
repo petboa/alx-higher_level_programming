@@ -1,0 +1,39 @@
+add_integer = __import__('0-add_integer').add_integer
+
+assert add_integer(3, 5) == 8
+assert add_integer(3.5, 5.9) == 9
+assert add_integer(0, 98) == 98
+assert add_integer(12, 57) == 69
+assert add_integer(98) == 197
+assert add_integer(-1.5) == -1
+assert add_integer(-1, 1) == 0
+
+try:
+    add_integer("poo", 2)
+except TypeError as e:
+    assert str(e) == "a must be an integer"
+
+try:
+    add_integer([1], {})
+except TypeError as e:
+    assert str(e) == "a must be an integer"
+
+try:
+    add_integer(5, "hi")
+except TypeError as e:
+    assert str(e) == "b must be an integer"
+
+try:
+    add_integer(None)
+except TypeError as e:
+    assert str(e) == "a must be an integer"
+
+try:
+    add_integer(float('inf'), 2)
+except OverflowError as e:
+    assert str(e) == "cannot convert float infinity to integer"
+
+try:
+    add_integer(float('NaN'), 2)
+except ValueError as e:
+    assert str(e) == "cannot convert float NaN to integer"

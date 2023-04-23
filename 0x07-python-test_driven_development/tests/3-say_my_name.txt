@@ -1,0 +1,34 @@
+# Import the say_my_name function
+import_module = __import__('3-say_my_name')
+say_my_name = import_module.say_my_name
+
+# Test cases
+assert say_my_name("John", "Smith") == "My name is John Smith"
+assert say_my_name("Groot") == "My name is Groot"
+assert say_my_name("") == "My name is "
+assert say_my_name("", "") == "My name is "
+
+# Error cases
+try:
+    say_my_name(3, "White")
+    assert False
+except TypeError:
+    pass
+
+try:
+    say_my_name("Walter", 3)
+    assert False
+except TypeError:
+    pass
+
+try:
+    say_my_name(, )
+    assert False
+except SyntaxError:
+    pass
+
+try:
+    say_my_name( )
+    assert False
+except TypeError:
+    pass
