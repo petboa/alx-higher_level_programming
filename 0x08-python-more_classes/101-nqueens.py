@@ -13,14 +13,14 @@ def is_safe(row, square, chessboard, Nm, diags):
         return False
     if square - diags >= 0 and chessboard[row][square - diags]:
         return False
-    if square + diags < (Nm) and chessboard[row][square + diags]:
+    if square + diags < Nm and chessboard[row][square + diags]:
         return False
     if row == 0:
         return True
     return is_safe(row - 1, square, chessboard, Nm, diags + 1)
 
 
-def place_queen(row, position, chessboard, Nm):
+def place_square(row, position, chessboard, Nm):
     for square in range(position, Nm):
         if 1 in chessboard[row]:
             return 0
@@ -30,13 +30,14 @@ def place_queen(row, position, chessboard, Nm):
         return
     return 1
 
+
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
     sys.exit(1)
 
 N = sys.argv[1]
 
-if not str.isdigit(N):
+if not N.isdigit():
     print("N must be a number")
     sys.exit(1)
 
@@ -54,7 +55,7 @@ while queen != N:
     position = 0
     row = 1
     while row < N:
-        if place_queen(row, position, chessboard, N):
+        if place_square(row, position, chessboard, N):
             row -= 1
             position = chessboard[row].index(1)
             chessboard[row][position] = 0
