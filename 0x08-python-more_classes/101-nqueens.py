@@ -17,7 +17,7 @@ def is_square_safe(row, col, board, n):
         if col+(row-i) <= n-1 and board[i][col+(row-i)]:
             return False
     return True
-    
+
 
 def solve_n_queens(n):
     queen_cols = [-1] * n
