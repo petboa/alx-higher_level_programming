@@ -1,31 +1,30 @@
-#include <stdio.h>
-#include <Python.h>
+#include "Python.h"
 
 /**
- * print_python_string - Prints information about a Python string object
- * @p: Pointer to a PyObject
+ * print_python_string - Prints information about Python strings.
+ * @str_obj: A PyObject string object.
  */
-void print_python_string(PyObject *p)
+void print_python_string(PyObject *str_obj)
 {
-    Py_ssize_t size;
-    Py_UCS4 *str;
-    int kind;
+    long int length;
 
-    printf("[.] string object info\n");
+    fflush(stdout);
 
-    if (!PyUnicode_Check(p)) {
-        printf("  [ERROR] Invalid String Object\n");
+    printf("[INFO] String object details:\n");
+
+    if (strcmp(str_obj->ob_type->tp_name, "str") != 0)
+    {
+        printf("[ERROR] Not a valid string object.\n");
         return;
     }
 
-    size = PyUnicode_GetLength(p);
-    str = PyUnicode_AsUCS4(p);
-    kind = PyUnicode_KIND(p);
+    length = ((PyASCIIObject *)(str_obj))->length;
 
-    printf("  type: %s\n", kind == PyUnicode_1BYTE_KIND ? "str" : "compact unicode object");
-    printf("  length: %ld\n", size);
-    printf("  value: %ls\n", str);
+    if (PyUnicode_IS_COMPACT_ASCII(str_obj))
+        printf("[INFO] Type: compact ascii\n");
+    else
+        printf("[INFO] Type: compact unicode object\n");
 
-    /* Do not forget to free the memory allocated by PyUnicode_AsUCS4() */
-    PyMem_Free(str);
+    printf("[INFO] Length: %ld\n", length);
+    printf("[INFO] Value: %ls\n", PyUnicode_AsWideCharString(str_obj, &length));
 }
