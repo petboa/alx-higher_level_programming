@@ -3,11 +3,11 @@
 import numpy as np
 
 
-def lazy_matrix_mul(a_c, a_d):
+def lazy_matrix_mul(m_a, m_b):
     """Return the multiplication of two matrices.
     Args:
-        a_c (list of lists of ints/floats): The first matrix.
-        a_d (list of lists of ints/floats): The second matrix.
+        m_a (list of lists of ints/floats): The first matrix.
+        m_b (list of lists of ints/floats): The second matrix.
     """
 
-    return (np.matmul(a_c, a_d))
+    return (np.matmul(m_a, m_b))
