@@ -27,12 +27,12 @@ ValueError: shapes (2,2) and (2,3) not aligned: 2 (dim 1) != 3 (dim 0)
 lazy_matrix_mul("hello", [4])
 Traceback (most recent call last):
 ...
-ValueError: a_c must be a list of lists
+ValueError: m_a must be a list of lists
 
 lazy_matrix_mul([[0]], "world")
 Traceback (most recent call last):
 ...
-ValueError: a_d must be a list of lists
+ValueError: m_b must be a list of lists
 
 """ Error when not a list of lists """
 
@@ -47,12 +47,12 @@ array([0])
 lazy_matrix_mul([[]], [[0]])
 Traceback (most recent call last):
 ...
-ValueError: a_c can't be empty
+ValueError: m_a can't be empty
 
 lazy_matrix_mul([], [[0]])
 Traceback (most recent call last):
 ...
-ValueError: a_c can't be empty
+ValueError: m_a can't be empty
 
 lazy_matrix_mul([[0]], [[]])
 array([], shape=(1, 0), dtype=int64)
@@ -60,7 +60,7 @@ array([], shape=(1, 0), dtype=int64)
 lazy_matrix_mul([[0]], [])
 Traceback (most recent call last):
 ...
-ValueError: a_d can't be empty
+ValueError: m_b can't be empty
 
 """ Not int or float values check """
 
