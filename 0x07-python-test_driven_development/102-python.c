@@ -8,7 +8,8 @@
 void print_python_string(PyObject *p)
 {
     Py_ssize_t size;
-    Py_UNICODE *str;
+    Py_UCS4 *str;
+    int kind;
 
     printf("[.] string object info\n");
 
@@ -18,12 +19,13 @@ void print_python_string(PyObject *p)
     }
 
     size = PyUnicode_GetLength(p);
-    str = PyUnicode_AsUnicode(p);
+    str = PyUnicode_AsUCS4(p);
+    kind = PyUnicode_KIND(p);
 
-    printf("  type: %s\n", Py_TYPE(p)->tp_name);
+    printf("  type: %s\n", kind == PyUnicode_1BYTE_KIND ? "str" : "compact unicode object");
     printf("  length: %ld\n", size);
     printf("  value: %ls\n", str);
 
-    /* Do not forget to free the memory allocated by PyUnicode_AsUnicode() */
+    /* Do not forget to free the memory allocated by PyUnicode_AsUCS4() */
     PyMem_Free(str);
 }
