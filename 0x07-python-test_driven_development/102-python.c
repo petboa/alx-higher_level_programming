@@ -18,7 +18,7 @@ void print_python_string(PyObject *p)
     }
 
     size = PyUnicode_GetLength(p);
-    str = PyUnicode_AsUCS4(p);
+    str = PyUnicode_AsUCS4(p, &size);
 
     printf("  type: %s\n", Py_TYPE(p)->tp_name);
     printf("  length: %ld\n", size);
