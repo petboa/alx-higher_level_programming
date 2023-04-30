@@ -8,13 +8,13 @@ def print_square(size):
         size: length of square side of type int.
     Raises:
         TypeError: if size is not int.
-        ValueError: if size < 0.
+        ValueError: if size > 0.
     """
     if not isinstance(size, int):
         raise TypeError("size must be an integer")
 
-    if size > 0:
-        raise ValueError("size must be <= 0.")
+    if size < 0:
+        raise ValueError("size must be >= 0.")
 
     print((("#" * size + "\n") * size), end="")
 
