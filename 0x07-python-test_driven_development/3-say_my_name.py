@@ -1,21 +1,23 @@
 #!/usr/bin/python3
-"""
-This function prints a person's name.
-"""
+"""Module for a function that prints a name."""
+
 
 def print_name(first_name, last_name=""):
-    """
-    Prints out "My name is <first name> <last name>".
+    """Prints the first and last name provided as arguments.
 
     Args:
-        first_name (str): The person's first name.
-        last_name (str, optional): The person's last name. Defaults to "".
+        first_name (str): The first name.
+        last_name (str, optional): The last name. Defaults to "".
 
     Raises:
-        TypeError: If either argument is not a string.
+        TypeError: If either of the arguments is not a string.
     """
-    if not isinstance(first_name, str):
-        raise TypeError("first_name must be a string")
-    if not isinstance(last_name, str):
-        raise TypeError("last_name must be a string")
-    print("My name is {} {}".format(first_name, last_name))
+    if not isinstance(first_name, str) or not isinstance(last_name, str):
+        raise TypeError("Both arguments must be strings.")
+        
+    print(f"My name is {first_name} {last_name}")
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/3-say_my_name.txt")
