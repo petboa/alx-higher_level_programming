@@ -1,34 +1,136 @@
-import text_indentation
+This is a doctest for the``5-text_indentation`` module
+==============================================================================================
 
-assert text_indentation.text_indentation("poop") == "poop"
+Using ``text_indentation``
+It is supposed to print a text with 2 new lines after each of these characters: '.', '?', ':'
+______________________________________________________________________________________________
 
-assert text_indentation.text_indentation("po.op") == "po.\n\nop"
+Import module:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-assert text_indentation.text_indentation("po: op") == "po:\n\nop"
+Test no delim:
+    >>> text_indentation("Hello Holberton")
+    Hello Holberton
 
-assert text_indentation.text_indentation("po.     op") == "po.\n\nop"
+Test string with spaces:
+    >>> text_indentation("Holberton          ")
+    Holberton
 
-assert text_indentation.text_indentation("") is None
+Test string with spaces 2:
+    >>> text_indentation("        Holberton")
+    Holberton
+    
+Test string with spaces 3:
+    >>> text_indentation("        Holberton          ")
+    Holberton
+    
+Test string with empty string:
+    >>> text_indentation("")
 
-assert text_indentation.text_indentation("poop:      ?    ") == "poop:\n\n?"
+Test string with empty string 2:
+    >>> text_indentation("      ")
 
-assert text_indentation.text_indentation("hello:      ?    ") == "hello:\n\n?"
+Test simple:
+    >>> text_indentation("Hello: Holberton")
+    Hello:
+    <BLANKLINE>
+    Holberton
 
-assert text_indentation.text_indentation("hi...") == "hi.\n\n.\n\n."
+Test delims with spaces:
+    >>> text_indentation("      ?:  :  ")
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    :
+    <BLANKLINE>
 
-assert text_indentation.text_indentation("             test     ") == "test"
+Test newline:
+    >>> text_indentation("\n")
+    <BLANKLINE>
 
-# The following lines test for errors
-try:
-    text_indentation.text_indentation(3)
-except TypeError:
-    pass
-else:
-    raise AssertionError("Expected TypeError")
+Test newline 2:
+    >>> text_indentation("\n\n")
+    <BLANKLINE>
+    <BLANKLINE>
 
-try:
-    text_indentation.text_indentation(None)
-except TypeError:
-    pass
-else:
-    raise AssertionError("Expected TypeError")
+Test newline 3:
+    >>> text_indentation("Hello\n\n")
+    Hello
+    <BLANKLINE>
+
+Test all delimeters:
+    >>> text_indentation("Hello: Holberton? school. fooo")
+    Hello:
+    <BLANKLINE>
+    Holberton?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+Test all delimeters with spaces:
+    >>> text_indentation("Hello   :     Holberton    ?    school.    fooo")
+    Hello:
+    <BLANKLINE>
+    Holberton?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+Test all delimeters with spaces at end:
+    >>> text_indentation("Hello   :     Holberton    ?    school.    fooo     ")
+    Hello:
+    <BLANKLINE>
+    Holberton?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+Test just delimeters:
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Test just delimeters 2:
+    >>> text_indentation("     ?   ")
+    ?
+    <BLANKLINE>
+
+Test nonindent inside indent
+    >>> text_indentation("?Hello.")
+    ?
+    <BLANKLINE>
+    Hello.
+    <BLANKLINE>
+
+Test existing newlines:
+    >>> text_indentation("?\n\n.\n\n:")
+    ?
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Test none:
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Test number:
+    >>> text_indentation(33)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
