@@ -36,7 +36,7 @@ if __name__ == "__main__":
             if i % 10 == 0:
                 print_stats()
             i += 1
-    except KeyboardInterrupt:
+    'except' KeyboardInterrupt:
         print_stats()
         raise
     print_stats()
