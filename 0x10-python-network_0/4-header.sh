@@ -1,4 +1,3 @@
 #!/bin/bash
-# script that takes in a URL as an argument
-curl -sH "X-School-User-id: 98" $url
-
+# Display response body
+curl -s "$1" -X GET -H "X-HolbertonSchool-User-Id: 98"
