@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-'''Module 4-hbtn_status.py'''
-import requests
+"""Fetches https://alx-intranet.hbtn.io/status"""
 if __name__ == "__main__":
-    html = requests.get("https://intranet.hbtn.io/status")
-    print("Body response:")
-    print("\t- type: {}".format(type(html.text)))
-    print("\t- content: {}".format(html.text))
+    import requests
+    r = requests.get('https://alx-intranet.hbtn.io/status')
+    response = r.text
+
+    print('Body response:')
+    print('\t- type: {}'.format(type(response)))
+    print('\t- content: {}'.format(response))
