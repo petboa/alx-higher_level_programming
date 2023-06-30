@@ -1,16 +1,8 @@
 #!/usr/bin/python3
-"""Fetch url using requests module
-"""
-
+'''Module 4-hbtn_status.py'''
 import requests
-
-
-if __name__ == '__main__':
-
-    url = 'https://intranet.hbtn.io/status'
-
-    response = requests.get(url)
-
-    print('Body response:')
-    print('\t- type: {}'.format(type(response.text)))
-    print('\t- content: {}'.format(response.text))
+if __name__ == "__main__":
+    html = requests.get("https://intranet.hbtn.io/status")
+    print("Body response:")
+    print("\t- type: {}".format(type(html.text)))
+    print("\t- content: {}".format(html.text))
